@@ -1,0 +1,56 @@
+Block Crush / Crystal Blocks - version 2.0.0
+Verified on 2026-10-06
+
+HTML browser verification: PASS
+- Opened the standalone HTML locally without a server or internet.
+- Loaded the embedded GLB and all six redesigned block models.
+- Checked nonblank WebGL pixels, color diversity, layout bounds and
+  controls on six viewports: 320x568, 360x640, 390x844, 430x932,
+  844x390 and 1440x900.
+- Portrait board grid spans approximately 93% of the viewport width.
+- Tray blocks are 45-48 CSS pixels at the tested portrait sizes.
+- Board taps and hovering do not display or place a selected piece.
+- Preview appears only during an actual drag; valid mouse and touch
+  drops place pieces. Invalid drops and touch cancellation preserve
+  the board and remaining moves.
+- Verified finger offset and moving 3D animation pixels.
+- Verified line clear, scoring, separate crystal balance, undo,
+  rotation, bomb, store purchase, settings and save/resume.
+- Completed level 1 with drag gestures, verified level 2 unlock,
+  next-level transition and locked levels.
+- No JavaScript errors in the final browser workflow checks.
+
+Game rules verification: PASS (unchanged shared rules)
+- Simultaneous row/column clears count intersections once.
+- Invalid placements do not consume moves.
+- Undo restores the previous board and pieces.
+- Four rotations restore a shape.
+- Bombs outside occupied areas do not change the board.
+- Win/loss handling, seeded generation and all 24 level definitions.
+
+Unity verification: PASS (compilation and runtime startup)
+- Unity Editor 6000.6.4f1 compiled the updated C# project.
+- The scene was generated and saved by the installed Unity Editor.
+- Batch play mode loaded the background, board, game data and
+  updated block sprite resources.
+- Final startup marker: CRYSTAL_RUNTIME_VERIFIED.
+- Unity visual appearance and native mobile gestures have not been
+  tested on a physical device. The editor reported a search-index
+  exception during its background initialization; the game startup
+  verification still completed successfully.
+
+Build limitation
+- index.html is the independent Three.js browser implementation.
+- No compiled Unity WebGL or iOS application is included.
+- A native Unity Android APK (version 3.0.0) is provided separately.
+  See ANDROID.md and ANDROID-VERIFICATION.txt for Android details.
+- Unity WebGL Build Support is not currently installed in the editor.
+- Browser verification used installed Chrome; Safari/Firefox and
+  physical phones have not been tested directly.
+
+Assets
+- New background: built-in imagegen; prompt in assets/art-prompt.txt.
+- Thick rounded block mesh: authored for the game; GLB in assets,
+  equivalent OBJ and materials in Unity Resources.
+- Icons: Lucide. Browser 3D renderer and GLB loader: Three.js.
+- The original reference HTML was not modified.

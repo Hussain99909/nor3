@@ -1,0 +1,56 @@
+Block Crush Android - version 3.0.0
+
+Build: PASS
+- Built from the Unity C# project, not an HTML/WebView wrapper.
+- Unity Editor 6000.6.4f1 reported Build Finished, Result: Success.
+- APK: BlockCrush-Android.apk, 26,834,534 bytes.
+- Package: com.crystalblocks.game; version code: 3.
+- Min SDK 26 (Android 8.0); target SDK 36.
+- Native ABIs: arm64-v8a and armeabi-v7a.
+- Graphics requirement: OpenGL ES 3.1.
+
+Artifact verification: PASS
+- Android apksigner verification passed with APK Signature Scheme v2.
+- Certificate: Android Debug, RSA 2048. Local testing signature,
+  not a private production signing key for Google Play publishing.
+- zipalign 4-byte / 16-KB native-page verification passed.
+- Manifest has no Internet, storage, camera or microphone permissions.
+- VIBRATE and an app-specific AndroidX signature permission are present.
+- SHA-256:
+  1D73B46334A698E328840E364FE9B22B8B2E2A0DC2440FA4358524708968CB3B
+
+Unity rules and runtime verification: PASS
+- 24 levels, runtime resource loading and scene startup.
+- Drag-only placement; a short tray tap does not place anything.
+- Mouse and touch drop calculations, including the finger offset.
+- Canceled gestures and invalid drops preserve the board and moves.
+- First row clear, scoring and undo costs.
+- Four rotations restore the original shape and charge correctly.
+- Empty bombs do not charge; occupied bombs clear and charge correctly.
+- Simultaneous row/column intersection clear counts each cell once.
+- Level completion, stars, next-level unlock and invalid save rejection.
+- Test verification preserved the editor's original saved game.
+- Markers: CRYSTAL_RULES_VERIFIED and CRYSTAL_RUNTIME_VERIFIED.
+
+Runtime device testing
+- Physical Android phones have not been tested directly.
+- Installation on an Android 16.1 x86_64 emulator: PASS (adb Success).
+- Launch on that emulator: FAILED before Unity gameplay startup.
+  The native crash trace is in translated ARM64 linker/ZIP loading
+  (/memfd:exec and /system/bin/arm64/linker64, called from libmain.so).
+- This suggests a native-loader/emulation compatibility issue, but
+  does not prove the APK will work on a physical phone. Native phone
+  runtime, appearance, gestures and vibration remain unverified.
+- Unity documents Android emulators as unsupported:
+  https://docs.unity.com/en-us/engine/6000.0/manual/platform-specific/android/introducing/requirements-and-compatibility
+- Treat this APK as a test build, not a device-validated release.
+
+Notes
+- New native features include drag preview, line-clear particles,
+  cached materials, polished faces, rasterized Lucide icons,
+  optional 18-ms vibration, pause/resume and Android Back handling.
+- App assets and levels are bundled; no server or account is required.
+- Native progress is separate from the standalone browser's progress.
+- Unity emitted a background editor search-index exception and an
+  icon-compression warning; rules verification and APK build succeeded.
+- HTML version remains 2.0.0 and is independent of the native APK.
